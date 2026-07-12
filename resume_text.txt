@@ -1,0 +1,94 @@
+ 
+Abhimanyu  Sharma  
+B-Tech  — CSE — 2027  
+8930405401 — abhimanyu.sharma.23cse@bmu.edu.in  — GitHub   
+sharma -abhimanyu.vercel.app  
+ Portfolio  — Engineering  Playbook  —  Blueprint  
+ 
+ 
+Education  
+BML  Munjal  University  2023  – Present  
+B.Tech in Computer Science and Engineering 
+School  of Engineering  and Technology  
+CGPA: 7.6 / 10  
+ 
+Skills  
+Programming  Languages:  C++,  Python,  Java,  JavaScript,  SQL,  HTML,  CSS 
+Libraries  & Frameworks:  Node.js,  FastAPI,  NumPy,  Pandas,  Matplotlib,  Bootstrap,  React  
+Tools & Platforms:  GitHub, VS Code, Jupyter Notebook, Android Studio, Flutter, MySQL, MongoDB , 
+FastAPI, Postman  
+Concepts:  Machine Learning, AI Engineering, LLMs, RAG Systems, Backend Development, API 
+Development, Data Processing, OOPs  
+ 
+Projects  
+KATE (Knowledgeable AI Tactical Entity) – Multimodal AI Personal Assistant  2026 — 
+Demo  — Playbook  
+ 
+Tech:  Python, FastAPI, React, Groq (Llama 3), Gemini API, OCR (Tesseract), SQLite, RAG, 
+Automation  
+• Engineered a multimodal AI assistant capable of voice -controlled OS automation, contextual 
+document retrieval, intelligent task execution, and conversational interactions through a hybrid local -
+cloud architecture.  
+• Developed a hybrid intent -routing architecture combining local automation pipelines and LLM -
+powered task orchestration, reducing API dependency while enabling intelligent workflow execution.  
+• Implemented OCR -driven visual verification pipelines and state -aware automation workflows, 
+replacing fragile time -delay macros with reliable UI feedback loops for application and messaging 
+automation.  
+• Built a Retrieval -Augmented Generation (RAG) system featuring document chunking, vector embeddings, 
+semantic search, citation -based responses, and hallucination mitigation for knowledge -grounded question 
+answering.  
+• Designed an agentic task execution framework that decomposes complex user goals into multi -step tool 
+chains for autonomous information retrieval, structured document generation, and workflow automation.  
+• Integrated multiple REST APIs, speech -processing services, and LLM providers to enable seamless 
+communication between automation pipelines, knowledge systems, and user interfaces.  
+ 
+     Section Sense – Intelligent Legal Information Retrieval System  2025  — Demo  — Playbook  
+Tech:  Python, FastAPI, React, NLP, Transformers, PostgreSQL  
+• Developed  an AI-driven  legal  retrieval  system  that semantically  maps  user  queries  to relevant  sections 
+from  Indian  laws  such  as BNS  (IPC),  BNSS  (CrPC),  and the IT Act.  
+• Built  an end-to-end pipeline  including  web  scraping,  preprocessing,  embedding  generation,  and se-
+mantic  similarity  search  using  transformer -based  models.  
+• Implemented  summarization  and chatbot  modules  to provide  conversational  legal  assistance.  
+
+• Deployed  the full-stack  application  on Vercel  with  FastAPI  backend  and React  frontend.  
+ 
+   CanvasX  – AI-Powered Editable Design Platform with Blockchain Provenance  
+2025 — Demo — Playbook   
+Tech: React, TypeScript, Express.js, Solidity, Gemini API, IPFS, Ethereum, Zustand  
+• Developed a full -stack AI -powered design platform that generates semantically editable SVG graphics from 
+natural -language prompts using Google Gemini 2.0 Flash.  
+• Built an interactive SVG canvas editor with real -time element -level editing, including text, colour, 
+typography, opacity, and layout modifications.  
+• Designed a cryptographic edit provenance system using SHA -256 hash chains and Merkle trees to record 
+and verify every creative edit in a tamper -evident structure.  
+• Integrated IPFS (Pinata) and Ethereum Sepolia smart contracts to mint ERC -721 NFTs storing prompt hashes, 
+Merkle roots, and decentralised provenance metadata.  
+• Implemented on -chain Merkle proof verification in Solidity, enabling third -party verification of individual 
+edit events without downloading the complete edit history.  
+• Structured the project as a pnpm monorepo with React frontend, Express TypeScript backend, Hardhat 
+smart contracts, and shared TypeScript interfaces for end -to-end type safety.  
+ 
+Internship  / Training  
+      Edatapoint  – Tata  AIA Life Insurance  Project  June  2025  
+• Collaborated  with  the Data  Science  team  to develop  a predictive  model  identifying  insurance  pro-
+tection gaps.  
+• Designed  preprocessing,  feature  engineering,  and model  training  pipelines  using  Python  and ML 
+techniques.  
+• Extracted  behavioral  and demographic  insights  from  structured  insurance  datasets.  
+• Delivered  a functional  solution  under  tight  deadlines  demonstrating  teamwork  and problem -solving.  
+LENDINGIQ  – Backend  Development  Internship  December  2025  – January  2026  
+• Worked  as a Backend  Developer  Intern  contributing  to server -side development  and financial  data 
+processing systems.  
+• Developed  bank  statement  extractors  to process  and structure  transaction  data  for downstream 
+analysis.  
+• Designed  and maintained  backend  APIs  handling  business  logic  and integration  with  frontend  and 
+external services.  
+• Assisted in database management and optimization ensuring reliable data storage and performance 
+efficiency.  
+• Wrote  clean,  scalable,  and maintainable  code  while  proactively  learning  backend  technologies.  
+ 
+Achievements  & Responsibilities  
+• Built and deployed multiple AI -powered applications using LLMs, RAG pipelines, and automation 
+systems.  
+• Earned  50-Day LeetCode  Streak  Badge  demonstrating  consistency  in problem -solving.  
+ 
