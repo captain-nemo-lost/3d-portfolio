@@ -12,12 +12,12 @@ export const ContactSection = () => {
     if (!scroll) return;
     const off = scroll.offset;
     
-    // Contact 3D Text Animation (0.87 -> 0.94)
+    // Contact 3D Text Animation
     if (textRef.current) {
-      if (off < 0.87) {
+      if (off < 0.76) {
         textRef.current.position.y = -viewport.height * 2.0;
-      } else if (off < 0.94) {
-        const p = (off - 0.87) / 0.07; 
+      } else if (off < 0.84) {
+        const p = (off - 0.76) / 0.08; 
         const easeOut = 1 - Math.pow(1 - p, 3);
         textRef.current.position.y = (viewport.height * 1.2) - (1 - easeOut) * (viewport.height * 2.0);
       } else {

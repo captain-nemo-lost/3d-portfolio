@@ -30,39 +30,35 @@ export const ProfileSection: React.FC = () => {
     if (!scroll) return;
     const off = scroll.offset; // 0.0 to 1.0 (7 pages total)
     
-    // 1. About Text Animation (0.08 -> 0.13 enter, 0.34 -> 0.43 exit)
+    // 1. About Text Animation
     if (textRef.current) {
-      if (off < 0.08) {
+      if (off < 0.02) {
         textRef.current.position.y = -viewport.height * 5.0;
-      } else if (off < 0.13) {
-        // Slide up
-        const p = (off - 0.08) / 0.05;
+      } else if (off < 0.07) {
+        const p = (off - 0.02) / 0.05;
         textRef.current.position.y = -viewport.height * 5.0 + (p * viewport.height * 5.0);
-      } else if (off <= 0.34) {
-        // Fixed
+      } else if (off <= 0.16) {
         textRef.current.position.y = 0;
-      } else if (off <= 0.43) {
-        // Scroll away up
-        const p = (off - 0.34) / 0.09;
+      } else if (off <= 0.22) {
+        const p = (off - 0.16) / 0.06;
         textRef.current.position.y = p * viewport.height * 1.5;
       } else {
         textRef.current.position.y = viewport.height * 5.0; // keep hidden
       }
     }
 
-    // 2. Experience Text Animation (0.38 -> 0.43 enter, 0.55 -> 0.64 exit)
+    // 2. Experience Text Animation
     if (expTextRef.current) {
-      if (off < 0.38) {
+      if (off < 0.18) {
         expTextRef.current.position.y = viewport.height * 2.0;
-      } else if (off <= 0.43) {
-        const p = (off - 0.38) / 0.05;
+      } else if (off <= 0.22) {
+        const p = (off - 0.18) / 0.04;
         const easeOut = 1 - Math.pow(1 - p, 3);
-        // Start at 1.5, drop down to 1.1 (a difference of 0.4)
         expTextRef.current.position.y = viewport.height * 1.5 - (easeOut * viewport.height * 0.4);
-      } else if (off <= 0.55) {
-        expTextRef.current.position.y = viewport.height * 1.1; // Shifted higher up
-      } else if (off <= 0.64) {
-        const p = (off - 0.55) / 0.09;
+      } else if (off <= 0.36) {
+        expTextRef.current.position.y = viewport.height * 1.1; 
+      } else if (off <= 0.42) {
+        const p = (off - 0.36) / 0.06;
         expTextRef.current.position.y = viewport.height * 1.1 + (p * viewport.height * 1.5);
       } else {
         expTextRef.current.position.y = viewport.height * 2.0;
@@ -71,27 +67,27 @@ export const ProfileSection: React.FC = () => {
 
 
 
-    // 3. ID Card Spring Animation (0.21 -> 0.64)
+    // 3. ID Card Spring Animation
     if (idCardRef.current) {
       let targetY = viewport.height * 2; 
       let targetX = viewport.width > 5 ? -viewport.width * 0.32 : 0;
       let targetRotZ = -0.05;
 
-      if (off >= 0.21 && off <= 0.34) {
+      if (off >= 0.10 && off <= 0.16) {
         // Phase 1: About Section Anchor
         targetY = -viewport.height * 0.15; 
-      } else if (off > 0.34 && off <= 0.55) {
+      } else if (off > 0.16 && off <= 0.36) {
         // Phase 2: Glide to Center for Experience Section
         targetY = 0;
         targetX = 0; 
         targetRotZ = 0;
-      } else if (off > 0.55 && off <= 0.64) {
+      } else if (off > 0.36 && off <= 0.42) {
         // Phase 3: Scroll up and exit
-        const p = (off - 0.55) / 0.09;
+        const p = (off - 0.36) / 0.06;
         targetY = p * viewport.height * 1.5;
         targetX = 0;
         targetRotZ = 0;
-      } else if (off > 0.64) {
+      } else if (off > 0.42) {
         targetY = viewport.height * 2;
         targetX = 0;
       }
@@ -101,7 +97,7 @@ export const ProfileSection: React.FC = () => {
       const stiffness = 0.08 * timeScale; 
       const damping = Math.pow(0.85, timeScale);
 
-      if (off > 0.55) {
+      if (off > 0.36) {
          // Rigid lock to scroll out smoothly without bounce
          idCardSpring.current.y = targetY;
          idCardSpring.current.x = targetX;
@@ -110,10 +106,10 @@ export const ProfileSection: React.FC = () => {
          idCardSpring.current.velocityY = 0;
          idCardSpring.current.velocityX = 0;
          idCardSpring.current.velocityRotZ = 0;
-      } else if (off > 0.34 && off <= 0.43) {
+      } else if (off > 0.16 && off <= 0.22) {
          // SCROLL-DRIVEN TRANSITION PHASE (Override physics)
          // Matches exactly with HTML bio scrolling away
-         const p = (off - 0.34) / 0.09;
+         const p = (off - 0.16) / 0.06;
          const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
          
          const startX = viewport.width > 5 ? -viewport.width * 0.32 : 0;
@@ -153,7 +149,7 @@ export const ProfileSection: React.FC = () => {
       idCardRef.current.rotation.y = idCardSpring.current.rotY;
       
       // Optional subtle floating when settled (disabled during the transition phase)
-      if (off >= 0.21 && off <= 0.55 && !(off > 0.34 && off <= 0.43)) {
+      if (off >= 0.10 && off <= 0.36 && !(off > 0.16 && off <= 0.22)) {
          idCardRef.current.rotation.y += Math.sin(state.clock.elapsedTime * 1.5) * 0.1;
          idCardRef.current.rotation.z += Math.cos(state.clock.elapsedTime * 1.2) * 0.02;
       }
@@ -232,20 +228,20 @@ export const AboutHtmlOverlay: React.FC = () => {
     if (!scroll || !htmlDivRef.current) return;
     const off = scroll.offset;
 
-    if (off < 0.15) {
+    if (off < 0.05) {
       htmlDivRef.current.style.transform = `translateX(100vw)`;
       htmlDivRef.current.style.opacity = '0';
-    } else if (off < 0.25) {
-      const p = (off - 0.15) / 0.1;
+    } else if (off < 0.10) {
+      const p = (off - 0.05) / 0.05;
       const easeOut = 1 - Math.pow(1 - p, 3);
       const xOffset = 100 - (easeOut * 100);
       htmlDivRef.current.style.transform = `translateX(${xOffset}vw)`;
       htmlDivRef.current.style.opacity = `${easeOut}`;
-    } else if (off <= 0.45) {
+    } else if (off <= 0.18) {
       htmlDivRef.current.style.transform = `translateX(0vw)`;
       htmlDivRef.current.style.opacity = '1';
-    } else if (off <= 0.55) {
-      const p = (off - 0.45) / 0.1;
+    } else if (off <= 0.25) {
+      const p = (off - 0.18) / 0.07;
       htmlDivRef.current.style.transform = `translateY(-${p * 50}vh)`;
       htmlDivRef.current.style.opacity = `${1 - p}`;
     } else {

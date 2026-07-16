@@ -14,17 +14,17 @@ export const SkillsSection = () => {
     
     // Skills 3D Text Animation
     if (textRef.current) {
-      if (off < 0.73) {
+      if (off < 0.62) {
         textRef.current.position.y = -viewport.height * 2.0;
-      } else if (off < 0.77) {
-        const p = (off - 0.73) / 0.04; 
+      } else if (off < 0.66) {
+        const p = (off - 0.62) / 0.04; 
         const easeOut = 1 - Math.pow(1 - p, 3);
         textRef.current.position.y = (viewport.height * 1.0) - (1 - easeOut) * (viewport.height * 1.5);
-      } else if (off <= 0.85) {
+      } else if (off <= 0.74) {
         // Locked in place above the skills cards
         textRef.current.position.y = viewport.height * 1.0;
       } else {
-        const p = (off - 0.85) / 0.05;
+        const p = (off - 0.74) / 0.05;
         textRef.current.position.y = viewport.height * 1.0 + (p * viewport.height * 1.5);
       }
     }

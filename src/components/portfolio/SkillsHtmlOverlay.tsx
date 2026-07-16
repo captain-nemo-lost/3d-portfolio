@@ -18,9 +18,9 @@ export const SkillsHtmlOverlay = () => {
     const handleScroll = (e: any) => {
       const off = e.detail;
 
-      // Global container visibility (only visible between 0.72 and 0.85)
+      // Global container visibility
       if (containerRef.current) {
-        if (off < 0.72 || off > 0.85) {
+        if (off < 0.61 || off > 0.74) {
           containerRef.current.style.opacity = '0';
         } else {
           containerRef.current.style.opacity = '1';
@@ -29,18 +29,18 @@ export const SkillsHtmlOverlay = () => {
 
       // Title Animation Removed because it's now in 3D
 
-      // Left Block Animation (0.74 - 0.77)
+      // Left Block Animation
       if (leftBlockRef.current) {
-        if (off < 0.74 || off > 0.85) {
+        if (off < 0.63 || off > 0.74) {
           leftBlockRef.current.style.opacity = '0';
           leftBlockRef.current.style.transform = 'translateX(-100px)';
-        } else if (off < 0.77) {
-          const p = (off - 0.74) / 0.03;
+        } else if (off < 0.66) {
+          const p = (off - 0.63) / 0.03;
           const easeOut = 1 - Math.pow(1 - p, 3);
           leftBlockRef.current.style.opacity = `${easeOut}`;
           leftBlockRef.current.style.transform = `translateX(${-100 + easeOut * 100}px)`;
-        } else if (off > 0.84) {
-          const p = (off - 0.84) / 0.01;
+        } else if (off > 0.73) {
+          const p = (off - 0.73) / 0.01;
           leftBlockRef.current.style.opacity = `${1 - p}`;
           leftBlockRef.current.style.transform = `translateX(${-p * 100}px)`;
         } else {
@@ -49,11 +49,11 @@ export const SkillsHtmlOverlay = () => {
         }
       }
 
-      // Determine active category based on scroll offset (0.77 to 0.85)
+      // Determine active category based on scroll offset
       let newActiveIndex = 0;
-      if (off > 0.83) newActiveIndex = 3;
-      else if (off > 0.81) newActiveIndex = 2;
-      else if (off > 0.79) newActiveIndex = 1;
+      if (off > 0.72) newActiveIndex = 3;
+      else if (off > 0.70) newActiveIndex = 2;
+      else if (off > 0.68) newActiveIndex = 1;
 
       if (newActiveIndex !== activeCategoryIndex) {
         setActiveCategoryIndex(newActiveIndex);
@@ -64,7 +64,7 @@ export const SkillsHtmlOverlay = () => {
         const block = rightBlocksRef.current[idx];
         if (!block) return;
 
-        const startOff = 0.77 + (idx * 0.02);
+        const startOff = 0.66 + (idx * 0.02);
         const endOff = startOff + 0.02;
         const transitionZone = 0.01;
 
@@ -77,13 +77,13 @@ export const SkillsHtmlOverlay = () => {
           const p = (off - startOff) / transitionZone;
           block.style.opacity = `${p}`;
           block.style.transform = `translateX(${100 - p * 100}px)`;
-        } else if (idx === categories.length - 1 && off <= 0.84) {
-          // Settled (If it's the last block, it stays until 0.84)
+        } else if (idx === categories.length - 1 && off <= 0.73) {
+          // Settled (If it's the last block, it stays until 0.73)
           block.style.opacity = '1';
           block.style.transform = 'translateX(0px)';
-        } else if (idx === categories.length - 1 && off > 0.84) {
+        } else if (idx === categories.length - 1 && off > 0.73) {
           // Last block exiting for Contact section
-          const p = (off - 0.84) / 0.01;
+          const p = (off - 0.73) / 0.01;
           block.style.opacity = `${1 - p}`;
           block.style.transform = `translateX(${p * 100}px)`;
         } else if (off < endOff) {

@@ -11,16 +11,16 @@ export const ContactHtmlOverlay = () => {
     const handleScroll = (e: any) => {
       const off = e.detail;
       
-      // Contact HTML Entry (0.90 -> 0.97 -> 1.0)
+      // Contact HTML Entry
       if (leftDivRef.current && rightDivRef.current && footerRef.current) {
-        if (off < 0.90) {
+        if (off < 0.78) {
           leftDivRef.current.style.transform = `translateX(-100vw)`;
           leftDivRef.current.style.opacity = '0';
           rightDivRef.current.style.transform = `translateX(100vw)`;
           rightDivRef.current.style.opacity = '0';
           footerRef.current.style.opacity = '0';
-        } else if (off < 0.97) {
-          const p = (off - 0.90) / 0.07;
+        } else if (off < 0.88) {
+          const p = (off - 0.78) / 0.10;
           const easeOut = 1 - Math.pow(1 - p, 3);
           
           leftDivRef.current.style.transform = `translateX(${-100 + (easeOut * 100)}vw)`;

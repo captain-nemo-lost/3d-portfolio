@@ -149,39 +149,39 @@ export const ProjectsSection: React.FC = () => {
     
     // 1. Projects Text Animation
     if (textRef.current) {
-      textRef.current.visible = off > 0.60; // Guaranteed zero peeking before its turn.
+      textRef.current.visible = off > 0.43; // Guaranteed zero peeking before its turn.
       
-      if (off < 0.61) {
+      if (off < 0.44) {
         textRef.current.position.y = -viewport.height * 5.0; // hidden below
-      } else if (off < 0.65) {
-        // Phase 1: Slide up from below (0.61 -> 0.65)
-        const p = (off - 0.61) / 0.04; 
+      } else if (off < 0.48) {
+        // Phase 1: Slide up from below (0.44 -> 0.48)
+        const p = (off - 0.44) / 0.04; 
         textRef.current.position.y = -viewport.height * 5.0 + (p * viewport.height * 5.0);
-      } else if (off <= 0.68) {
+      } else if (off <= 0.50) {
         // Phase 2 & 3: Lock in place at center while waiting for cards
         textRef.current.position.y = 0; 
       } else {
         // Phase 4: Scroll away upwards together with cards
-        const p = (off - 0.68) / 0.04;
+        const p = (off - 0.50) / 0.04;
         textRef.current.position.y = p * viewport.height * 1.5;
       }
     }
 
     // 2. Cards Animation
     if (cardsRef.current) {
-      if (off < 0.64) {
+      if (off < 0.46) {
         // Phase 1 & 2: Stay hidden (deliberate delay)
         cardsRef.current.position.y = -viewport.height * 2.5;
-      } else if (off <= 0.67) {
-        // Phase 3: Slide up into the lower position (0.64 -> 0.67)
-        const p = (off - 0.64) / 0.03; 
+      } else if (off <= 0.49) {
+        // Phase 3: Slide up into the lower position (0.46 -> 0.49)
+        const p = (off - 0.46) / 0.03; 
         cardsRef.current.position.y = -viewport.height * 1.5 + (p * viewport.height * 1.2); // ends at -0.3vh
-      } else if (off <= 0.68) {
+      } else if (off <= 0.50) {
         // Phase 3.5: Lock in place
         cardsRef.current.position.y = -viewport.height * 0.3;
       } else {
         // Phase 4: Scroll away upwards perfectly synced with the text
-        const p = (off - 0.68) / 0.04;
+        const p = (off - 0.50) / 0.04;
         cardsRef.current.position.y = -viewport.height * 0.3 + (p * viewport.height * 1.5);
       }
     }

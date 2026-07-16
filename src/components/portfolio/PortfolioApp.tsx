@@ -49,20 +49,20 @@ const ProfileHtmlOverlay = () => {
 
       // 1. About Bio
       if (htmlDivRef.current) {
-        if (off < 0.13) {
+        if (off < 0.05) {
           htmlDivRef.current.style.transform = `translateX(100vw)`;
           htmlDivRef.current.style.opacity = '0';
-        } else if (off < 0.21) {
-          const p = (off - 0.13) / 0.08;
+        } else if (off < 0.10) {
+          const p = (off - 0.05) / 0.05;
           const easeOut = 1 - Math.pow(1 - p, 3);
           const xOffset = 100 - (easeOut * 100);
           htmlDivRef.current.style.transform = `translateX(${xOffset}vw)`;
           htmlDivRef.current.style.opacity = `${easeOut}`;
-        } else if (off <= 0.34) {
+        } else if (off <= 0.18) {
           htmlDivRef.current.style.transform = `translateX(0vw)`;
           htmlDivRef.current.style.opacity = '1';
-        } else if (off <= 0.43) {
-          const p = (off - 0.34) / 0.09;
+        } else if (off <= 0.25) {
+          const p = (off - 0.18) / 0.07;
           htmlDivRef.current.style.transform = `translateY(-${p * 50}vh)`;
           htmlDivRef.current.style.opacity = `${1 - p}`;
         } else {
@@ -72,19 +72,19 @@ const ProfileHtmlOverlay = () => {
 
       // 2. Internship 1 (Right)
       if (intern1Ref.current) {
-        if (off < 0.43) {
+        if (off < 0.25) {
           intern1Ref.current.style.transform = `translateX(50vw)`;
           intern1Ref.current.style.opacity = '0';
-        } else if (off < 0.47) {
-          const p = (off - 0.43) / 0.04;
+        } else if (off < 0.29) {
+          const p = (off - 0.25) / 0.04;
           const easeOut = 1 - Math.pow(1 - p, 3);
           intern1Ref.current.style.transform = `translateX(${50 - (easeOut * 50)}vw)`;
           intern1Ref.current.style.opacity = `${easeOut}`;
-        } else if (off <= 0.55) {
+        } else if (off <= 0.40) {
           intern1Ref.current.style.transform = `translateX(0vw)`;
           intern1Ref.current.style.opacity = '1';
-        } else if (off <= 0.64) {
-          const p = (off - 0.55) / 0.09;
+        } else if (off <= 0.48) {
+          const p = (off - 0.40) / 0.08;
           intern1Ref.current.style.transform = `translateY(-${p * 50}vh)`;
           intern1Ref.current.style.opacity = `${1 - p}`;
         } else {
@@ -94,7 +94,7 @@ const ProfileHtmlOverlay = () => {
         // Line by line bullets
         resumeData.experience[0].points.forEach((_, i) => {
           if (!intern1PointsRef.current[i]) return;
-          const startOff = 0.43 + (i * 0.013);
+          const startOff = 0.25 + (i * 0.013);
           if (off < startOff) {
             intern1PointsRef.current[i]!.style.opacity = '0';
             intern1PointsRef.current[i]!.style.transform = 'translateX(20px)';
@@ -111,19 +111,19 @@ const ProfileHtmlOverlay = () => {
 
       // 3. Internship 2 (Left)
       if (intern2Ref.current) {
-        if (off < 0.47) {
+        if (off < 0.29) {
           intern2Ref.current.style.transform = `translateX(-50vw)`;
           intern2Ref.current.style.opacity = '0';
-        } else if (off < 0.51) {
-          const p = (off - 0.47) / 0.04;
+        } else if (off < 0.33) {
+          const p = (off - 0.29) / 0.04;
           const easeOut = 1 - Math.pow(1 - p, 3);
           intern2Ref.current.style.transform = `translateX(${-50 + (easeOut * 50)}vw)`;
           intern2Ref.current.style.opacity = `${easeOut}`;
-        } else if (off <= 0.55) {
+        } else if (off <= 0.40) {
           intern2Ref.current.style.transform = `translateX(0vw)`;
           intern2Ref.current.style.opacity = '1';
-        } else if (off <= 0.64) {
-          const p = (off - 0.55) / 0.09;
+        } else if (off <= 0.48) {
+          const p = (off - 0.40) / 0.08;
           intern2Ref.current.style.transform = `translateY(-${p * 50}vh)`;
           intern2Ref.current.style.opacity = `${1 - p}`;
         } else {
@@ -133,7 +133,7 @@ const ProfileHtmlOverlay = () => {
         // Line by line bullets
         resumeData.experience[1].points.forEach((_, i) => {
           if (!intern2PointsRef.current[i]) return;
-          const startOff = 0.47 + (i * 0.013);
+          const startOff = 0.29 + (i * 0.013);
           if (off < startOff) {
             intern2PointsRef.current[i]!.style.opacity = '0';
             intern2PointsRef.current[i]!.style.transform = 'translateX(-20px)';
@@ -321,7 +321,7 @@ const ParticleSystem: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
       pointsRef.current.rotation.x += dt * 0.02;
 
       const off = scroll ? scroll.offset : 0;
-      const isAboutActive = off >= 0.25 && off <= 0.45;
+      const isAboutActive = off >= 0.10 && off <= 0.25;
       const targetX = viewport.width > 5 ? -viewport.width * 0.32 : 0;
 
       const posArray = pointsRef.current.geometry.attributes.position.array as Float32Array;
@@ -529,15 +529,27 @@ export const PortfolioApp: React.FC = () => {
       <SkillsHtmlOverlay />
       <ContactHtmlOverlay />
 
+      {/* Game Gallery Link (Top Left) */}
+      <div className="absolute top-8 left-10 z-[60] flex items-center gap-6">
+        <a
+          href="https://speedrun-velocity.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/60 hover:text-[#00f0ff] hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center gap-2"
+        >
+          Game Gallery <span className="text-lg leading-none">↗</span>
+        </a>
+      </div>
+
       {/* Navigation Nodes (Top Right) */}
       <div className="absolute top-8 right-10 z-[60] flex items-center gap-6">
         {[
           { name: 'Home', offset: 0 },
-          { name: 'About', offset: 0.25 },
-          { name: 'Experience', offset: 0.55 },
-          { name: 'Projects', offset: 0.72 },
-          { name: 'Skills', offset: 0.85 },
-          { name: 'Contact', offset: 1.0 }
+          { name: 'About', offset: 0.12 },
+          { name: 'Experience', offset: 0.30 },
+          { name: 'Projects', offset: 0.50 },
+          { name: 'Skills', offset: 0.70 },
+          { name: 'Contact', offset: 0.90 }
         ].map((nav) => (
           <button
             key={nav.name}
