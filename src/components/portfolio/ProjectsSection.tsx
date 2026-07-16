@@ -14,6 +14,8 @@ const carouselState = {
 const ProjectPanel: React.FC<{ index: number; total: number; project: any }> = ({ index, total, project }) => {
   const groupRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
+  const { viewport } = useThree();
+  const isMobile = viewport.width < 5;
 
   // Load the project image
   const texture = useTexture(project.image || '/about-photo.png');
@@ -47,21 +49,22 @@ const ProjectPanel: React.FC<{ index: number; total: number; project: any }> = (
     const dist = virtualIndex - (total / 2);
     
     // Massive, page-filling Library Stack
-    const xOffset = dist * 1.3; 
-    // Shallower V-shape depth (-0.7 instead of -1.2) so they don't shrink away as much
-    const zOffset = -Math.abs(dist) * 0.7; 
+    const xOffset = dist * (isMobile ? 0.8 : 1.3); 
+    // Shallower V-shape depth so they don't shrink away as much
+    const zOffset = -Math.abs(dist) * (isMobile ? 0.5 : 0.7); 
     const yOffset = -0.2 - Math.abs(dist) * 0.02; // Flatter vertical arc
     const baseYRot = -0.3; // All face slightly left to show right pages
 
     // Hover interaction: Pop out significantly to clear the overlapping neighbors
     const targetX = xOffset;
     const targetY = hovered ? yOffset + 0.3 : yOffset;
-    const targetZ = hovered ? zOffset + 2.5 : zOffset; 
+    const targetZ = hovered ? zOffset + (isMobile ? 1.5 : 2.5) : zOffset; 
     const targetYRot = hovered ? 0 : baseYRot;
     
     // Significantly reduced edge fade so books stay large on the sides
     const edgeFade = Math.max(0.7, 1.0 - (Math.abs(dist) * 0.02));
-    const targetScale = hovered ? 1.1 : edgeFade;
+    const baseScale = isMobile ? 0.7 : 1.0;
+    const targetScale = hovered ? baseScale * 1.1 : edgeFade * baseScale;
 
     // If the book wrapped around the edges, teleport it instantly instead of lerping across screen
     if (Math.abs(groupRef.current.position.x - targetX) > 18.0) {

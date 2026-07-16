@@ -175,42 +175,42 @@ const ProfileHtmlOverlay = () => {
 
   return (
     <div className="fixed inset-0 w-screen h-screen pointer-events-none z-50 overflow-hidden">
-      {/* 1. ABOUT BIO (Right Side) */}
-      <div className="absolute right-0 top-0 h-full flex items-center justify-end pr-[5vw] md:pr-[10vw]">
+      {/* 1. ABOUT BIO */}
+      <div className="absolute left-0 md:left-auto md:right-0 top-0 h-full flex items-center justify-center md:justify-end px-[5vw] md:px-0 md:pr-[10vw] w-full">
         <div
           ref={htmlDivRef}
-          className={`w-[85vw] md:w-[45vw] mt-[25vh] text-white flex flex-col p-8 md:p-12 bg-[#050505]/95 backdrop-blur-3xl rounded-3xl border transition-all duration-500 ease-out pointer-events-none ${isHovered ? 'shadow-[0_0_40px_rgba(59,130,246,0.15)] border-blue-500/30' : 'shadow-2xl border-white/10'
+          className={`w-[90vw] md:w-[45vw] mt-[15vh] md:mt-[25vh] text-white flex flex-col p-6 md:p-12 bg-[#050505]/95 backdrop-blur-3xl rounded-3xl border transition-all duration-500 ease-out pointer-events-none ${isHovered ? 'shadow-[0_0_40px_rgba(59,130,246,0.15)] border-blue-500/30' : 'shadow-2xl border-white/10'
             }`}
           style={{ transform: 'translateX(100vw)', opacity: 0 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">{resumeData.name}</h2>
-          <h3 className="text-blue-400 text-lg md:text-xl mb-8 uppercase tracking-[0.2em] font-medium">{resumeData.title}</h3>
-          <div className="space-y-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-2 md:mb-3 tracking-tight">{resumeData.name}</h2>
+          <h3 className="text-blue-400 text-sm md:text-xl mb-6 md:mb-8 uppercase tracking-[0.2em] font-medium">{resumeData.title}</h3>
+          <div className="space-y-3 md:space-y-4">
             {resumeData.about.split('. ').map((sentence, i) => (
-              sentence && <p key={i} className="text-gray-300 text-base md:text-lg leading-relaxed">{sentence}.</p>
+              sentence && <p key={i} className="text-gray-300 text-sm md:text-lg leading-relaxed">{sentence}.</p>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 2. INTERNSHIP 1 (Right Side) */}
-      <div className="absolute right-0 top-0 h-full flex items-center justify-end pr-[5vw] md:pr-[5vw] w-full md:w-[35vw]">
+      {/* 2. INTERNSHIP 1 */}
+      <div className="absolute left-0 md:left-auto md:right-0 top-0 h-full flex items-center justify-center md:justify-end px-[5vw] md:px-0 md:pr-[5vw] w-full md:w-[35vw]">
         <div
           ref={intern1Ref}
-          className="mt-[20vh] text-white flex flex-col p-6 md:p-8 bg-[#050505]/95 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-2xl transition-all duration-100 ease-out"
+          className="w-[90vw] md:w-full mt-[15vh] md:mt-[20vh] text-white flex flex-col p-6 md:p-8 bg-[#050505]/95 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-2xl transition-all duration-100 ease-out"
           style={{ transform: 'translateX(50vw)', opacity: 0 }}
         >
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-1">{resumeData.experience[0].company}</h3>
-          <p className="text-blue-400 font-medium text-sm md:text-base mb-4">{resumeData.experience[0].role} | {resumeData.experience[0].date}</p>
-          <ul className="space-y-3">
+          <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{resumeData.experience[0].company}</h3>
+          <p className="text-blue-400 font-medium text-xs md:text-base mb-3 md:mb-4">{resumeData.experience[0].role} | {resumeData.experience[0].date}</p>
+          <ul className="space-y-2 md:space-y-3">
             {resumeData.experience[0].points.map((pt, i) => (
               <li
                 key={i}
                 ref={(el) => { intern1PointsRef.current[i] = el; }}
-                className="text-gray-300 text-sm md:text-base leading-relaxed flex items-start"
+                className="text-gray-300 text-xs md:text-base leading-relaxed flex items-start"
                 style={{ opacity: 0, transform: 'translateX(20px)' }}
               >
-                <span className="text-blue-500 mr-3 mt-1">▹</span>
+                <span className="text-blue-500 mr-2 md:mr-3 mt-0.5 md:mt-1">▹</span>
                 <span>{pt}</span>
               </li>
             ))}
@@ -218,24 +218,24 @@ const ProfileHtmlOverlay = () => {
         </div>
       </div>
 
-      {/* 3. INTERNSHIP 2 (Left Side) */}
-      <div className="absolute left-0 top-0 h-full flex items-center justify-start pl-[5vw] md:pl-[5vw] w-full md:w-[35vw]">
+      {/* 3. INTERNSHIP 2 */}
+      <div className="absolute left-0 top-0 h-full flex items-center justify-center md:justify-start px-[5vw] md:px-0 md:pl-[5vw] w-full md:w-[35vw]">
         <div
           ref={intern2Ref}
-          className="mt-[20vh] text-white flex flex-col p-6 md:p-8 bg-[#050505]/95 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-2xl transition-all duration-100 ease-out"
+          className="w-[90vw] md:w-full mt-[15vh] md:mt-[20vh] text-white flex flex-col p-6 md:p-8 bg-[#050505]/95 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-2xl transition-all duration-100 ease-out"
           style={{ transform: 'translateX(-50vw)', opacity: 0 }}
         >
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-1">{resumeData.experience[1].company}</h3>
-          <p className="text-blue-400 font-medium text-sm md:text-base mb-4">{resumeData.experience[1].role} | {resumeData.experience[1].date}</p>
-          <ul className="space-y-3">
+          <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{resumeData.experience[1].company}</h3>
+          <p className="text-blue-400 font-medium text-xs md:text-base mb-3 md:mb-4">{resumeData.experience[1].role} | {resumeData.experience[1].date}</p>
+          <ul className="space-y-2 md:space-y-3">
             {resumeData.experience[1].points.map((pt, i) => (
               <li
                 key={i}
                 ref={(el) => { intern2PointsRef.current[i] = el; }}
-                className="text-gray-300 text-sm md:text-base leading-relaxed flex items-start"
+                className="text-gray-300 text-xs md:text-base leading-relaxed flex items-start"
                 style={{ opacity: 0, transform: 'translateX(-20px)' }}
               >
-                <span className="text-blue-500 mr-3 mt-1">▹</span>
+                <span className="text-blue-500 mr-2 md:mr-3 mt-0.5 md:mt-1">▹</span>
                 <span>{pt}</span>
               </li>
             ))}
@@ -482,6 +482,7 @@ export const PortfolioApp: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
@@ -530,35 +531,78 @@ export const PortfolioApp: React.FC = () => {
       <ContactHtmlOverlay />
 
       {/* Game Gallery Link (Top Left) */}
-      <div className="absolute top-8 left-10 z-[60] flex items-center gap-6">
+      <div className="absolute top-4 left-4 md:top-8 md:left-10 z-[60] flex items-center">
         <a
           href="https://speedrun-velocity.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white/60 hover:text-[#00f0ff] hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center gap-2"
+          className="text-white/60 hover:text-[#00f0ff] hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] text-[10px] md:text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center gap-1 md:gap-2"
         >
-          Game Gallery <span className="text-lg leading-none">↗</span>
+          Game Gallery <span className="text-sm md:text-lg leading-none">↗</span>
         </a>
       </div>
 
       {/* Navigation Nodes (Top Right) */}
-      <div className="absolute top-8 right-10 z-[60] flex items-center gap-6">
-        {[
-          { name: 'Home', offset: 0 },
-          { name: 'About', offset: 0.12 },
-          { name: 'Experience', offset: 0.30 },
-          { name: 'Projects', offset: 0.50 },
-          { name: 'Skills', offset: 0.70 },
-          { name: 'Contact', offset: 0.90 }
-        ].map((nav) => (
-          <button
-            key={nav.name}
-            onClick={() => window.dispatchEvent(new CustomEvent('scroll-to', { detail: nav.offset }))}
-            className="text-white/60 hover:text-[#00f0ff] hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] text-sm font-semibold tracking-widest uppercase transition-all duration-300"
-          >
-            {nav.name}
-          </button>
-        ))}
+      <div className="absolute top-4 right-4 md:top-8 md:right-10 z-[70] flex items-center">
+        
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          {[
+            { name: 'Home', offset: 0 },
+            { name: 'About', offset: 0.12 },
+            { name: 'Experience', offset: 0.30 },
+            { name: 'Projects', offset: 0.50 },
+            { name: 'Skills', offset: 0.70 },
+            { name: 'Contact', offset: 0.90 }
+          ].map((nav) => (
+            <button
+              key={nav.name}
+              onClick={() => window.dispatchEvent(new CustomEvent('scroll-to', { detail: nav.offset }))}
+              className="text-white/60 hover:text-[#00f0ff] hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] text-sm font-semibold tracking-widest uppercase transition-all duration-300"
+            >
+              {nav.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Mobile Hamburger Button */}
+        <button 
+          className="md:hidden text-white/60 hover:text-white p-2"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-12 right-0 bg-[#050505]/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 flex flex-col gap-4 min-w-[150px] shadow-2xl md:hidden">
+            {[
+              { name: 'Home', offset: 0 },
+              { name: 'About', offset: 0.12 },
+              { name: 'Experience', offset: 0.30 },
+              { name: 'Projects', offset: 0.50 },
+              { name: 'Skills', offset: 0.70 },
+              { name: 'Contact', offset: 0.90 }
+            ].map((nav) => (
+              <button
+                key={nav.name}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.dispatchEvent(new CustomEvent('scroll-to', { detail: nav.offset }));
+                }}
+                className="text-white/80 hover:text-[#00f0ff] text-[10px] font-semibold tracking-widest uppercase text-right w-full transition-colors"
+              >
+                {nav.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
     </div>

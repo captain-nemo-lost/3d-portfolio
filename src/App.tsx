@@ -56,10 +56,10 @@ const App: React.FC = () => {
             </button>
 
             {/* Content Area */}
-            <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
+            <div className="flex flex-col md:flex-row flex-1 overflow-y-auto md:overflow-hidden">
               
               {/* LEFT SIDE: Visuals */}
-              <div className="w-full md:w-[55%] flex bg-[#0a0a0a] border-r border-white/5 relative p-6">
+              <div className="w-full md:w-[55%] flex bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-white/5 relative p-4 md:p-6 shrink-0">
                 
                 {/* Vertical Thumbnail Gallery */}
                 <div className="hidden md:flex flex-col w-20 h-full border-r border-white/5 pr-4 mr-6 items-center justify-center gap-4">
@@ -88,7 +88,7 @@ const App: React.FC = () => {
               </div>
 
               {/* RIGHT SIDE: Information */}
-              <div className="w-full md:w-[45%] p-8 md:p-12 flex flex-col overflow-y-auto bg-gradient-to-br from-[#0a0a0a] to-[#050505]">
+              <div className="w-full md:w-[45%] p-6 md:p-12 flex flex-col overflow-y-visible md:overflow-y-auto bg-gradient-to-br from-[#0a0a0a] to-[#050505]">
                 
                 {/* Category Pill */}
                 <div className="mb-8">
@@ -156,12 +156,12 @@ const App: React.FC = () => {
             </div>
 
             {/* BOTTOM BAR: Pagination */}
-            <div className="h-16 md:h-20 border-t border-white/5 flex items-center justify-between px-8 bg-[#0a0a0a] rounded-b-2xl">
+            <div className="h-16 md:h-20 border-t border-white/5 flex items-center justify-between px-4 md:px-8 bg-[#0a0a0a] rounded-b-2xl shrink-0">
               <button 
                 onClick={handlePrev} 
-                className="text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-[0.15em] flex items-center gap-3 font-medium"
+                className="text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-[0.15em] flex items-center gap-1 md:gap-3 font-medium"
               >
-                <span className="text-lg">←</span> Prev Project
+                <span className="text-lg">←</span> <span className="hidden md:inline">Prev Project</span>
               </button>
               
               <div className="flex items-center gap-6">
@@ -180,9 +180,9 @@ const App: React.FC = () => {
 
               <button 
                 onClick={handleNext} 
-                className="text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-[0.15em] flex items-center gap-3 font-medium"
+                className="text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-[0.15em] flex items-center gap-1 md:gap-3 font-medium"
               >
-                Next Project <span className="text-lg">→</span>
+                <span className="hidden md:inline">Next Project</span> <span className="text-lg">→</span>
               </button>
             </div>
           </div>

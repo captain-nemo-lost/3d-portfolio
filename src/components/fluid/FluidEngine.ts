@@ -185,6 +185,15 @@ export function initFluidEngine(canvas: HTMLCanvasElement) {
   };
   window.addEventListener('mousemove', onMouseMove);
 
+  const onTouchMove = (e: TouchEvent) => {
+    if (e.touches.length > 0) {
+      targetX = e.touches[0].clientX / window.innerWidth;
+      targetY = 1.0 - (e.touches[0].clientY / window.innerHeight);
+    }
+  };
+  window.addEventListener('touchmove', onTouchMove, { passive: true });
+  window.addEventListener('touchstart', onTouchMove, { passive: true });
+
   const onResize = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     composer.setSize(window.innerWidth, window.innerHeight);
@@ -300,6 +309,8 @@ export function initFluidEngine(canvas: HTMLCanvasElement) {
 
   return () => {
     window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('touchmove', onTouchMove);
+    window.removeEventListener('touchstart', onTouchMove);
     window.removeEventListener('resize', onResize);
     cancelAnimationFrame(reqId);
     renderer.dispose();
